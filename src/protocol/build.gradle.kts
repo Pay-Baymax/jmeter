@@ -86,6 +86,9 @@ project("http") {
         implementation("org.brotli:dec:0.1.2")
         testImplementation(testFixtures(project(":src:testkit-wiremock")))
         testImplementation("com.github.tomakehurst:wiremock-jre8")
+
+        implementation("io.micrometer:micrometer-registry-datadog:${rootProject.properties.get("micrometer.version")}")
+        implementation("io.micrometer:micrometer-registry-statsd:${rootProject.properties.get("micrometer.version")}")
     }
 }
 

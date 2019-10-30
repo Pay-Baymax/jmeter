@@ -32,6 +32,7 @@ plugins {
     java
     jacoco
     checkstyle
+    id("com.github.ben-manes.versions") version "0.27.0"
     id("org.jetbrains.gradle.plugin.idea-ext") apply false
     id("org.nosphere.apache.rat")
     id("com.diffplug.gradle.spotless")

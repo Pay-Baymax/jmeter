@@ -41,7 +41,7 @@ val srcLicense by configurations.creating {
 }
 
 dependencies {
-    binaryDependencies(project(":src:dist", "runtimeElements"))
+    // binaryDependencies(project(":src:dist", "runtimeElements"))
 }
 
 fun gradleWrapperVersion(wrapperProps: String) =
@@ -104,7 +104,7 @@ val gatherBinaryLicenses by tasks.registering(GatherLicenseTask::class) {
         }
     }
 
-    overrideLicense("com.thoughtworks.xstream:xstream:1.4.11") {
+    overrideLicense("com.thoughtworks.xstream:xstream:${rootProject.properties.get("xstream.version")}") {
         expectedLicense = SimpleLicense("BSD style", uri("http://x-stream.github.io/license.html"))
         // https://github.com/x-stream/xstream/issues/151
         // https://github.com/x-stream/xstream/issues/153
@@ -167,17 +167,17 @@ val gatherBinaryLicenses by tasks.registering(GatherLicenseTask::class) {
         effectiveLicense = SpdxLicense.Apache_2_0
     }
     for (lib in listOf("hamcrest-core", "hamcrest")) {
-        overrideLicense("org.hamcrest:$lib:2.1") {
+        overrideLicense("org.hamcrest:$lib:${rootProject.properties.get("hamcrest.version")}") {
             // https://github.com/hamcrest/JavaHamcrest/issues/264
             // pom.xml lists "New BSD License", however it is BSD_3
             expectedLicense = SpdxLicense.BSD_3_Clause
             licenseFiles = "hamcrest"
         }
     }
-    overrideLicense("org.exparity:hamcrest-date:2.0.4") {
+    overrideLicense("org.exparity:hamcrest-date:${rootProject.properties.get("hamcrest-date.version")}") {
         // https://github.com/eXparity/hamcrest-date/issues/26
         // pom.xml lists "New BSD License", however it is BSD_3
-        expectedLicense = SimpleLicense("New BSD License", uri("http://www.opensource.org/licenses/bsd-license.php"))
+        // expectedLicense = SimpleLicense("New BSD License", uri("http://www.opensource.org/licenses/bsd-license.php"))
         effectiveLicense = SpdxLicense.BSD_3_Clause
     }
     overrideLicense("net.sf.jtidy:jtidy:r938") {
